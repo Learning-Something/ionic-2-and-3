@@ -23,8 +23,20 @@ export class CategoriasPage {
     this.categoriaService.findAll()
       .subscribe(response => {
         this.items = response;
+        this.getImageIfExists();
       },
       error => { });
+  }
+
+  getImageIfExists() {
+    for(let item of this.items) {
+      this.categoriaService.getImageFromAssets(item.id)
+      .subscribe(response => {
+        item.imageUrl = `./../../assets/imgs/cat${item.id}.jpg`;
+      },
+      error => {});
+    }
+
   }
 
 }

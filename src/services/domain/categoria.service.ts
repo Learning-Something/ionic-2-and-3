@@ -14,4 +14,11 @@ export class CategoriaService {
   findAll(): Observable<CategoriaDTO[]> {
     return this.http.get<CategoriaDTO[]>(`${API_CONFIG.baseUrl}/categorias`);
   }
+
+  getImageFromAssets(id: string) {
+    let url = `./../../assets/imgs/cat${id}.jpg`;
+
+    // blob -> o tipo da resposta será uma imagem
+    return this.http.get(url, { responseType: 'blob' });
+  }
 }
