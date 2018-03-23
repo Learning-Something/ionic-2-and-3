@@ -15,7 +15,7 @@ export class CategoriaService {
     return this.http.get<CategoriaDTO[]>(`${API_CONFIG.baseUrl}/categorias`);
   }
 
-  getImageFromAssets(id: string) {
+  getImageFromAssets(id: string): Observable<any> {
     let url = `./../../assets/imgs/cat${id}.jpg`;
 
     // blob -> o tipo da resposta será uma imagem
