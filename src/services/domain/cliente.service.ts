@@ -22,4 +22,15 @@ export class ClienteService {
     // blob -> o tipo da resposta será uma imagem
     return this.http.get(url, { responseType: 'blob' });
   }
+
+  insert(cliente: ClienteDTO) {
+    return this.http.post(
+      `${API_CONFIG.baseUrl}/clientes`,
+      cliente,
+      {
+        observe: 'response',
+        responseType: 'text'
+      }
+    )
+  }
 }
